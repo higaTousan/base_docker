@@ -1,0 +1,15 @@
+# direnv configuration file
+.envrc
+#  Local .terraform directories
+**/.terraform/*
+# .tfstate files
+*.tfstate
+*.tfstate.*
+# .tfvars files
+*.tfvars
+# mutagen
+mutagen.yml.lock
+# box console logs
+ubuntu-*-console.log
+# Vagrant specific
+.vagrant/
