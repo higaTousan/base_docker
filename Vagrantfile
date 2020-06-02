@@ -32,6 +32,13 @@ Vagrant.configure('2') do |config|
     brew install gcc
     brew tap aws/tap
     brew install aws-sam-cli
+
+    ## install aws cli
+    curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
+    sudo apt install unzip
+    unzip awscliv2.zip
+    sudo ./aws/install
+
   SHELL
 
   config.vm.provision :docker, run: 'always'
