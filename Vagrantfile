@@ -20,6 +20,21 @@ Vagrant.configure('2') do |config|
     rsync_auto: true,
     rsync__exclude: ['.git/', 'node_modules/', 'log/', 'tmp/']
 
+  config.vm.provision "shell", privileged: false, inline: <<-SHELL
+    ## install brew
+    /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
+    echo 'export PATH="/home/linuxbrew/.linuxbrew/bin:$PATH"' >>  ~/.bashrc
+    set -i
+    source ~/.bashrc
+
+    ## install sam cli
+    brew install gmp
+    brew install gcc
+    brew tap aws/tap
+    brew install aws-sam-cli
+  SHELL
+
   config.vm.provision :docker, run: 'always'
   config.vm.provision :docker_compose
+
 end
